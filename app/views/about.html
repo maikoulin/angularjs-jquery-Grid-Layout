@@ -1,0 +1,21 @@
+<div class="layout-container" grid-layout data-per-height="{{dataPerHeight}}">
+  <div ng-repeat="chartItem in chartList"
+       data-col="{{chartItem.col < 0 ? 0 : chartItem.col}}"
+       data-row="{{ chartItem.row < 0 ? 0 : chartItem.row}}"
+       data-xsize="{{chartItem.xsize}}" data-ysize="{{chartItem.ysize}}" data-id="{{chartItem.id}}"
+       class="gs-w" grid-item>
+    <div class="panel panel-default">
+      <div class="panel-heading" style="background-color: #303742;height: 32px;line-height: 32px;">
+        <div class="panel-action-bar"></div>
+      </div>
+      <div class="panel-footer">
+        <div class="panel-action-bar">
+          <a class="panel-resize">
+            <button style="color: red ;height: 20px;width: 20px"></button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
