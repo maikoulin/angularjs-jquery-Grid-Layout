@@ -1,4 +1,4 @@
-# angularjs-jquery-Grid-Layout 
+# angularjs-jquery-Grid-Layout  
 
 <img src="screens/Gif.gif" width=600></img>
 
