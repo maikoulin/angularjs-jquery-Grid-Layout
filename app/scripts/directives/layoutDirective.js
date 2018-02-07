@@ -17,7 +17,7 @@ angular.module("angularTestApp")
           this.className = "";
           this.style = {};
           this.containerPadding = [10, 10];
-          this.maxRows = Infinity; // infinite vertical growth
+          this.maxRows = Infinity;
           this.layout = [];
           this.margin = [10, 10];
           this.isDraggable = true;
