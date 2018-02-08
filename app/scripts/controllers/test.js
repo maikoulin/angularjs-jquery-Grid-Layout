@@ -20,14 +20,15 @@ angular.module('angularTestApp')
 
     $scope.props = new Props();
 
+    $scope.handles = {};
 
     const colWidth = $("#testList").width() / 12;
-    const rowHeight = 100;
+    const rowHeight = 80;
     $scope.props.layout = generateLayout();
 
 
     function generateLayout() {
-      return _.map(_.range(0, 25), function (item, i) {
+      return _.map(_.range(0, 5), function (item, i) {
         const y = Math.ceil(Math.random() * 3) + 1;
         return {
           x: (_.random(0, 5) * 2) % 12,
@@ -58,6 +59,10 @@ angular.module('angularTestApp')
     function getContainerWidth() {
       return $("#testList").width();
     }
+
+    $scope.onClickDeleted = function (item) {
+      $scope.handles.deletedItem(item.i)
+    };
 
 
   }]);

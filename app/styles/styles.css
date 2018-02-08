@@ -190,5 +190,7 @@
 .drag-resize-container {
   width: 100%;
   background: gainsboro;
-  text-align: center
+  text-align: center;
+  vertical-align: center;
+
 }

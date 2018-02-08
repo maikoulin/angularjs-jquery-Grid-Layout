@@ -4,50 +4,50 @@ angular.module("angularTestApp")
     return {
       restrict: "AE",
       scope: {
-        dateResource: '=',
+        resource: '=',
       },
       replace: true,
-      template: '<div class="ui-widget-content grid-item' + " {{dateResource.className}}" + ' " >' +
-      '[{{dateResource.x}},{{dateResource.y}},{{dateResource.w}},{{dateResource.h}} ] ' +
+      template: '<div class="ui-widget-content grid-item' + " {{resource.className}}" + ' " >' +
+      '[{{resource.x}},{{resource.y}},{{resource.w}},{{resource.h}} ] ' +
       '<ng-transclude></ng-transclude>' +
       '</div>',
       transclude: true,
       controller: ["$scope", '$element', function ($scope, $element) {
         function Props() {
           this.children = $element;
-          this.cols = $scope.dateResource.cols;
-          this.containerWidth = $scope.dateResource.containerWidth;
-          this.margin = $scope.dateResource.margin ? $scope.dateResource.margin : [0, 0];
-          this.containerPadding = $scope.dateResource.containerPadding ? $scope.dateResource.containerPadding : [0, 0];
-          this.rowHeight = $scope.dateResource.rowHeight;
-          this.colWidth = $scope.dateResource.colWidth;
+          this.cols = $scope.resource.cols;
+          this.containerWidth = $scope.resource.containerWidth;
+          this.margin = $scope.resource.margin ? $scope.resource.margin : [0, 0];
+          this.containerPadding = $scope.resource.containerPadding ? $scope.resource.containerPadding : [0, 0];
+          this.rowHeight = $scope.resource.rowHeight;
+          this.colWidth = $scope.resource.colWidth;
 
-          this.maxRows = $scope.dateResource.maxRows;
-          this.isDraggable = $scope.dateResource.isDraggable;
-          this.isResizable = $scope.dateResource.isResizable;
-          this.static = $scope.dateResource.static;
+          this.maxRows = $scope.resource.maxRows;
+          this.isDraggable = $scope.resource.isDraggable;
+          this.isResizable = $scope.resource.isResizable;
+          this.static = $scope.resource.static;
 
-          this.className = $scope.dateResource.className;
-          this.style = $scope.dateResource.style;
-
-
-          this.x = $scope.dateResource.x;
-          this.y = $scope.dateResource.y;
-          this.w = $scope.dateResource.w;
-          this.h = $scope.dateResource.h;
+          this.className = $scope.resource.className;
+          this.style = $scope.resource.style;
 
 
-          this.minW = $scope.dateResource.minW;
-          this.maxW = $scope.dateResource.maxW;
-          this.minH = $scope.dateResource.minH;
-          this.maxH = $scope.dateResource.maxH;
-          this.i = $scope.dateResource.i;
-          this.onDrag = $scope.dateResource.onDrag;
-          this.onDragStart = $scope.dateResource.onDragStart;
-          this.onDragStop = $scope.dateResource.onDragStop;
-          this.onResize = $scope.dateResource.onResize;
-          this.onResizeStart = $scope.dateResource.onResizeStart;
-          this.onResizeStop = $scope.dateResource.onResizeStop
+          this.x = $scope.resource.x;
+          this.y = $scope.resource.y;
+          this.w = $scope.resource.w;
+          this.h = $scope.resource.h;
+
+
+          this.minW = $scope.resource.minW;
+          this.maxW = $scope.resource.maxW;
+          this.minH = $scope.resource.minH;
+          this.maxH = $scope.resource.maxH;
+          this.i = $scope.resource.i;
+          this.onDrag = $scope.resource.onDrag;
+          this.onDragStart = $scope.resource.onDragStart;
+          this.onDragStop = $scope.resource.onDragStop;
+          this.onResize = $scope.resource.onResize;
+          this.onResizeStart = $scope.resource.onResizeStart;
+          this.onResizeStop = $scope.resource.onResizeStop
         }
 
         $scope.props = new Props();
@@ -71,7 +71,7 @@ angular.module("angularTestApp")
       link: function ($scope, element, attrs) {
 
         const gridItem = $(element);
-        $scope.dateResource.onUpdatePosition = function (x, y) {
+        $scope.resource.onUpdatePosition = function (x, y) {
           gridItem.css({"transition-duration": '.3s'});
           gridItem.css({
             top: y * $scope.props.rowHeight,
@@ -81,7 +81,7 @@ angular.module("angularTestApp")
             gridItem.css({"transition-duration": '0s'});
           }, 300);
         };
-        $scope.dateResource.onUpdateSize = function (x, y, w, h, colWidth, rowHeight) {
+        $scope.resource.onUpdateSize = function (x, y, w, h, colWidth, rowHeight) {
           if (colWidth) {
             $scope.props.colWidth = colWidth
           }
@@ -244,7 +244,7 @@ angular.module("angularTestApp")
           let x = Math.round((left - margin[0]) / (colWidth + margin[0]));
           let y = Math.round((top - margin[1]) / (rowHeight + margin[1]));
 
-          // Capping
+
           x = Math.max(Math.min(x, cols - w), 0);
           y = Math.max(Math.min(y, maxRows - h), 0);
 
@@ -258,7 +258,7 @@ angular.module("angularTestApp")
           let w = Math.round((width + margin[0]) / (colWidth + margin[0]));
           let h = Math.round((height + margin[1]) / (rowHeight + margin[1]));
 
-          // Capping
+
           w = Math.max(Math.min(w, cols - x), 0);
           h = Math.max(Math.min(h, maxRows - y), 0);
           return {w, h};

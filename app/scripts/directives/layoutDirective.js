@@ -5,8 +5,10 @@ angular.module("angularTestApp")
       restrict: "AE",
       scope: {
         listData: '=',
+        handles: '='
+
       },
-      template: '<item-drag-resize ng-repeat="item in state.layout" date-resource="item">' +
+      template: '<item-drag-resize ng-repeat="item in state.layout" resource="item">' +
       '<ng-transclude></ng-transclude>' +
       '</item-drag-resize>',
       transclude: true,
@@ -53,8 +55,6 @@ angular.module("angularTestApp")
         };
 
         $scope.state = new State();
-        console.log($scope.state.layout);
-
 
         function containerHeight() {
           if (!$scope.props.autoSize) return;
@@ -80,6 +80,28 @@ angular.module("angularTestApp")
           $scope.state.layout[i].onResize = onResize;
           $scope.state.layout[i].onResizeStop = onResizeStop;
         }
+
+
+        $scope.handles.deletedItem = function (id) {
+          let {layout} = $scope.state;
+          const {cols} = $scope.props;
+          console.log(id);
+          $scope.state.layout = _.reject(layout, {i: id});
+          let newLayout = utils.compact($scope.state.layout, utils.compactType($scope.props), cols);
+
+          for (let k = 0, length = newLayout.length; k < length; k++) {
+            for (let j = 0; j < length; j++) {
+              let o = $scope.state.layout[k];
+              let n = newLayout[j];
+              if (o.i === n.i && (o.x !== n.x || o.y !== n.y)) {
+                o.onUpdatePosition(n.x, n.y);
+                o.x = n.x;
+                o.y = n.y;
+              }
+            }
+          }
+
+        };
 
         /**
          *
