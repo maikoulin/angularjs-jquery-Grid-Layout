@@ -22,7 +22,7 @@ angular.module('angularTestApp')
 
     $scope.handles = {};
 
-    const colWidth = $("#testList").width() / 12;
+    const colWidth = getContainerWidth() / 12;
     const rowHeight = 80;
     $scope.props.layout = generateLayout();
 
@@ -57,12 +57,16 @@ angular.module('angularTestApp')
     }
 
     function getContainerWidth() {
-      return $("#testList").width();
+      return $("#layout-container").width();
     }
 
     $scope.onClickDeleted = function (item) {
       $scope.handles.deletedItem(item.i)
     };
+
+    $scope.onClickAdded = function () {
+      $scope.handles.addedItem()
+    }
 
 
   }]);

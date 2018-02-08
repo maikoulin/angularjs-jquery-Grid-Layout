@@ -104,6 +104,36 @@ angular.module("angularTestApp")
 
         };
 
+        $scope.newCounter = 0;
+        $scope.handles.addedItem = function () {
+          let {layout} = $scope.state;
+          const {cols} = $scope.props;
+          let newItem = utils.cloneLayoutItem(layout[0]);
+          newItem.i = "n" + $scope.newCounter;
+          newItem.x = (layout.length * 2) % ($scope.props.cols || 12);
+          newItem.y = Infinity; // puts it at the bottom
+          newItem.w = 2;
+          newItem.h = 2;
+          $scope.newCounter = $scope.newCounter + 1;
+          const newLayout = utils.compact(layout.concat(newItem), utils.compactType($scope.props), cols);
+          var isAddedItem = false;
+          for (let k = 0, length = newLayout.length; k < length; k++) {
+            for (let j = 0, l = layout.length; j < l; j++) {
+              if (layout[j].i === newLayout[k].i) {
+                isAddedItem = false;
+                break;
+              } else {
+                isAddedItem = true;
+              }
+            }
+            if (isAddedItem) {
+              layout.push(newLayout[k]);
+              return
+            }
+          }
+
+        };
+
         /**
          *
          * @param i

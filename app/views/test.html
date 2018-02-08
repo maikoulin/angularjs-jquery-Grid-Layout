@@ -1,5 +1,8 @@
-<div style="position: relative;background-color: #5bc0de">
-  <div id="testList">
+<div>
+  <button id="added" ng-click="onClickAdded()">添加</button>
+
+  <div id="layout-container"
+       style="position: relative;background-color: #5bc0de;margin-top: 10px;border:1px #0b58a2 solid ;height: 100px">
     <layout-drag-resize id="layout-drag-resize" list-data="props.layout" handles="handles">
       <div id="title" style="width: 100%;background: bisque">拖动区域、元素id:{{$parent.item.i}}
         <button style="float: right" id="deleted" ng-click="onClickDeleted($parent.item)">删除</button>
