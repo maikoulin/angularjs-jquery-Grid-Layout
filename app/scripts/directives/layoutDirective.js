@@ -118,7 +118,7 @@ angular.module("angularTestApp")
           newItem.w = 2;
           newItem.h = 2;
           $scope.newCounter = $scope.newCounter + 1;
-          const newLayout = utils.compact(layout.concat(newItem), utils.compactType($scope.props), cols);
+          const newLayout = utils.compact(angular.copy(layout.concat(newItem)), utils.compactType($scope.props), cols);
           var isAddedItem = false;
           for (let k = 0, length = newLayout.length; k < length; k++) {
             for (let j = 0, l = layout.length; j < l; j++) {

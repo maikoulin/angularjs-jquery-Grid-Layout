@@ -28,7 +28,7 @@ angular.module('angularTestApp')
 
 
     function generateLayout() {
-      return _.map(_.range(0, 5), function (item, i) {
+      return _.map(_.range(0, 25), function (item, i) {
         const y = Math.ceil(Math.random() * 3) + 1;
         return {
           x: (_.random(0, 5) * 2) % 12,
