@@ -86,14 +86,17 @@ angular.module("angularTestApp")
         $scope.handles.deletedItem = function (id) {
           let {layout} = $scope.state;
           const {cols} = $scope.props;
-          console.log(id);
-          $scope.state.layout = _.reject(layout, {i: id});
-          let newLayout = utils.compact($scope.state.layout, utils.compactType($scope.props), cols);
-
+          for (let k = 0, length = layout.length; k < length; k++) {
+            if (layout[k].i === id) {
+              layout.splice(k, 1);
+              break;
+            }
+          }
+          let newLayout = utils.compact(angular.copy(layout), utils.compactType($scope.props), cols);
           for (let k = 0, length = newLayout.length; k < length; k++) {
+            const n = newLayout[k];
             for (let j = 0; j < length; j++) {
-              let o = $scope.state.layout[k];
-              let n = newLayout[j];
+              let o = $scope.state.layout[j];
               if (o.i === n.i && (o.x !== n.x || o.y !== n.y)) {
                 o.onUpdatePosition(n.x, n.y);
                 o.x = n.x;
