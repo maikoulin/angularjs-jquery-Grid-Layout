@@ -79,6 +79,7 @@ angular.module("angularTestApp")
           $scope.state.layout[i].onResizeStart = onResizeStart;
           $scope.state.layout[i].onResize = onResize;
           $scope.state.layout[i].onResizeStop = onResizeStop;
+
         }
 
 
