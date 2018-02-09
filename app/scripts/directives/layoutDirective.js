@@ -187,17 +187,17 @@ angular.module("angularTestApp")
             $scope.state.oldLayout = newOldLayout;
 
             for (let k = 0, length = layout.length; k < length; k++) {
+              let n = newOldLayout[k];
               for (let j = 0; j < length; j++) {
-                let o = layout[k];
-                let n = newOldLayout[j];
+                let o = layout[j];
                 if (o.i === n.i && n.i !== i && (o.x !== n.x || o.y !== n.y)) {
-                  layout[k].onUpdatePosition(n.x, n.y);
-                  layout[k].x = n.x;
-                  layout[k].y = n.y;
+                  layout[j].onUpdatePosition(n.x, n.y);
+                  layout[j].x = n.x;
+                  layout[j].y = n.y;
                 }
-                if (n.i === i) {
-                  dragShadow(n.x, n.y, n)
-                }
+              }
+              if (n.i === i) {
+                dragShadow(n.x, n.y, n)
               }
             }
           });
@@ -277,17 +277,17 @@ angular.module("angularTestApp")
             $scope.state.oldLayout = newOldLayout;
 
             for (let k = 0, length = layout.length; k < length; k++) {
+              let n = newOldLayout[k];
               for (let j = 0; j < length; j++) {
-                let o = layout[k];
-                let n = newOldLayout[j];
+                let o = layout[j];
                 if (o.i === n.i && n.i !== i && (o.x !== n.x || o.y !== n.y)) {
-                  layout[k].onUpdatePosition(n.x, n.y);
-                  layout[k].x = n.x;
-                  layout[k].y = n.y;
+                  layout[j].onUpdatePosition(n.x, n.y);
+                  layout[j].x = n.x;
+                  layout[j].y = n.y;
                 }
-                if (n.i === i) {
-                  resizeShadow(n.w, n.h, n)
-                }
+              }
+              if (n.i === i) {
+                resizeShadow(n.w, n.h, n)
               }
             }
           });
