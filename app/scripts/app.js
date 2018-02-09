@@ -34,6 +34,11 @@ angular
         controller: 'TestCtrl',
         controllerAs: 'test'
       })
+      .when('/resizeTest', {
+        templateUrl: 'views/resizeTest.html',
+        controller: 'resizeTestCtrl',
+        controllerAs: 'resizeTest'
+      })
       .otherwise({
         redirectTo: '/about'
       });

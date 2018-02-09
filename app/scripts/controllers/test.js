@@ -7,10 +7,10 @@ angular.module('angularTestApp')
       this.cols = 12;
       this.className = "";
       this.style = {};
-      this.containerPadding = [10, 10];
+      this.containerPadding = [0, 0];
       this.maxRows = Infinity; // infinite vertical growth
       this.layout = [];
-      this.margin = [10, 10];
+      this.margin = [0, 0];
       this.isDraggable = true;
       this.isResizable = true;
       this.verticalCompact = true;
