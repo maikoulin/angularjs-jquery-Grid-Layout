@@ -72,6 +72,9 @@ angular.module("angularTestApp")
 
         const gridItem = $(element);
         $scope.resource.onUpdatePosition = function (x, y) {
+
+          $scope.props.x = x;
+          $scope.props.y = y;
           gridItem.css({"transition-duration": '.3s'});
           gridItem.css({
             top: y * $scope.props.rowHeight,
@@ -82,6 +85,10 @@ angular.module("angularTestApp")
           }, 300);
         };
         $scope.resource.onUpdateSize = function (x, y, w, h, colWidth, rowHeight) {
+          $scope.props.x = x;
+          $scope.props.y = y;
+          $scope.props.w = w;
+          $scope.props.h = h;
           if (colWidth) {
             $scope.props.colWidth = colWidth
           }
